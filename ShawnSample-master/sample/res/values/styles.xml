@@ -1,0 +1,40 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="@android:style/Theme.Light.NoTitleBar">
+
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="ptrHeaderStyle">@style/Widget.Custom.PtrHeader</item>
+    </style>
+
+    <!-- This is commented out as you should not set this unless you know what you're doing -->
+    <!-- <item name="ptrHeaderHeight"></item> -->
+    <!-- <item name="ptrHeaderTitleTextAppearance">@style/TextAppearance.Custom.PtrHeader.Title</item> -->
+    <style name="Widget.Custom.PtrHeader" parent="android:Widget">
+        <item name="ptrActionHeaderBackground">@color/pink</item>
+        <item name="ptrHeaderTitleTextColor">@android:color/white</item>
+        <item name="ptrHeaderTitleTextSize">18sp</item>
+        <item name="ptrHeaderHeight">48dp</item>
+        <item name="ptrProgressBarStyle">outside</item>
+        <item name="ptrProgressBarColor">@color/default_progress_bar_color</item>
+        <item name="ptrProgressBarHeight">2dp</item>
+        <item name="ptrPullText">@string/pull_to_refresh_pull_label</item>
+        <item name="ptrRefreshingText">@string/pull_to_refresh_refreshing_label</item>
+        <item name="ptrReleaseText">@string/pull_to_refresh_release_label</item>
+    </style>
+
+</resources>

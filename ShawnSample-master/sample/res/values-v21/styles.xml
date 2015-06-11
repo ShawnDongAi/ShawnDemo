@@ -1,0 +1,8 @@
+<resources>
+
+    <style name="AppBaseTheme" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/pink</item>
+        <item name="android:colorPrimaryDark">@color/pink</item>
+    </style>
+
+</resources>
