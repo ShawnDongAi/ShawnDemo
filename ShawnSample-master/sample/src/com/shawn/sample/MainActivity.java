@@ -18,6 +18,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.SectionIndexer;
@@ -37,7 +39,6 @@ import com.shawn.lib.swipe_menu.SwipeMenuCreator;
 import com.shawn.lib.swipe_menu.SwipeMenuItem;
 import com.shawn.lib.swipe_menu.SwipeMenuListView.OnMenuItemClickListener;
 
-
 public class MainActivity extends SwipeBackActivity {
 
 	private List<Item> allData = new ArrayList<Item>();
@@ -49,7 +50,7 @@ public class MainActivity extends SwipeBackActivity {
 	private TextView mTextDialog;
 	private ImageButton mImageDialog;
 	private List<String> sectionList = new ArrayList<String>();
-	
+
 	private ClearEditText filterInput;
 	private View headView;
 
@@ -58,7 +59,7 @@ public class MainActivity extends SwipeBackActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
 		setSwipeBackEnable(false);
-		
+
 		headView = View.inflate(this, R.layout.list_header, null);
 		filterInput = (ClearEditText) headView.findViewById(R.id.filter_edit);
 		filterInput.addTextChangedListener(new TextWatcher() {
@@ -180,7 +181,6 @@ public class MainActivity extends SwipeBackActivity {
 			@Override
 			public boolean onMenuItemClick(int position, SwipeMenu menu,
 					int index) {
-				startActivity(new Intent(MainActivity.this, SwipeBackDemoActivity.class));
 				switch (menu.getViewType()) {
 				case 1:
 					switch (index) {
@@ -216,6 +216,15 @@ public class MainActivity extends SwipeBackActivity {
 					break;
 				}
 				return false;
+			}
+		});
+
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				startActivity(new Intent(MainActivity.this,
+						SwipeBackDemoActivity.class));
 			}
 		});
 
@@ -307,7 +316,7 @@ public class MainActivity extends SwipeBackActivity {
 			}
 			this.datas = items;
 		}
-		
+
 		public void clear() {
 			datas.clear();
 		}
@@ -432,8 +441,7 @@ public class MainActivity extends SwipeBackActivity {
 		}
 		return mSortList;
 	}
-	
-	
+
 	private void setDatas() {
 		itemList.clear();
 		for (int i = 0; i < allData.size(); i++) {
@@ -448,9 +456,9 @@ public class MainActivity extends SwipeBackActivity {
 		mAdapter.setDatas(itemList, sectionList.size());
 		mAdapter.notifyDataSetChanged();
 	}
-	
+
 	private synchronized void filterData(String key) {
-		if(TextUtils.isEmpty(key)){
+		if (TextUtils.isEmpty(key)) {
 			sectionList.clear();
 			setDatas();
 		} else {

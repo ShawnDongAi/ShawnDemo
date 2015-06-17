@@ -22,7 +22,6 @@ public class SwipeBackDemoActivity extends SwipeBackActivity implements OnRefres
 
 		Options.Builder builder = Options.create();
 		builder.refreshOnUp(true);
-//		builder.scrollDistance(80);
 		builder.noMinimize();
 		Options option = builder.build();
         // We can now setup the PullToRefreshLayout
