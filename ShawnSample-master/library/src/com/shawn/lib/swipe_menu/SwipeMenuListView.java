@@ -50,6 +50,10 @@ public class SwipeMenuListView extends ListView {
 		MAX_Y = dp2px(MAX_Y);
 		mTouchState = TOUCH_STATE_NONE;
 	}
+	
+	public boolean isSwipeMode() {
+		return mTouchState == TOUCH_STATE_X;
+	}
 
 	@Override
 	public void setAdapter(ListAdapter adapter) {
@@ -108,7 +112,6 @@ public class SwipeMenuListView extends ListView {
 			int oldPos = mTouchPosition;
 			mDownX = ev.getX();
 			mDownY = ev.getY();
-			mTouchState = TOUCH_STATE_NONE;
 
 			mTouchPosition = pointToPosition((int) ev.getX(), (int) ev.getY());
 
@@ -174,8 +177,10 @@ public class SwipeMenuListView extends ListView {
 				}
 				ev.setAction(MotionEvent.ACTION_CANCEL);
 				super.onTouchEvent(ev);
+				mTouchState = TOUCH_STATE_NONE;
 				return true;
 			}
+			mTouchState = TOUCH_STATE_NONE;
 			break;
 		}
 		return super.onTouchEvent(ev);

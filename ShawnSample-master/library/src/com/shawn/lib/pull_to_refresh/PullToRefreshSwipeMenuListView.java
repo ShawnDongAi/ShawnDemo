@@ -320,4 +320,11 @@ public class PullToRefreshSwipeMenuListView extends PullToRefreshAdapterViewBase
 
 	}
 
+	@Override
+	protected boolean isReadyForPullStart() {
+		if (getRefreshableView().isSwipeMode()) {
+			return false;
+		}
+		return super.isReadyForPullStart();
+	}
 }
